@@ -1,7 +1,10 @@
+'use client';
 import React, { useState } from 'react';
 import './Login.css'
+import {Link} from 'react-router-dom';
 
 import Loading from '../../components/Loading';
+import Register from './Register.js';
 
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { db, auth } from '../../firebase';
@@ -9,6 +12,8 @@ import { setDoc, doc } from 'firebase/firestore';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 
 import Form from 'react-bootstrap/Form';
+import "bootstrap/dist/css/bootstrap.css";
+import styles from "./Login.css"
 import swal from 'sweetalert';
 
 function Login() {
@@ -69,59 +74,43 @@ function Login() {
 
     return (
         <>
-            <div className="Login">
-                <Form onSubmit={handleSubmit}>
-                    <h2>Email</h2>
-                    <Form.Control
-                        type="email"
-                        name="email"
-                        placeholder="Email"
-                        required
-                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-                    />
+            <div className="Login text-center container-fluid bg">
+                <h1 className='text-light'>Login</h1>
+                <div className='form-height mx-5 justify-content-center container border border-radius border-dark border-3 bg-white bg-gradient'>
+               
+                    <Form onSubmit={handleSubmit}>
+                        <Form.Control
+                            type="email"
+                            name="email"
+                            placeholder="Email"
+                            required
+                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                            className="mx-auto m-5 p-2 bg-light"
+                        />
+                        <Form.Control
+                            type="password"
+                            name="password"
+                            placeholder="Password"
+                            required
+                            minLength={6}
+                            className="mx-auto m-5 p-2 bg-light"
+                        />
 
-                    <h2>Password</h2>
-                    <Form.Control
-                        type="password"
-                        name="password"
-                        placeholder="Password"
-                        required
-                        minLength={6}
-                    />
+                        <center>
+                            <button type="submit" className="submit-btn bg-danger text-light rounded m-3 p-1">Login</button>
+                        </center>
+                    
 
-                    <center>
-                        <button type="submit">Sign In</button>
-                    </center>
-                </Form>
+                    </Form> 
+                </div>
+                <p className='text-light m-3'>Do not have an account?</p>
+                <Link href= "/register">
+                    <button className='submit-btn bg-danger text-light rounded m-1 p-1'>Create Account</button>
+                </Link>
             </div>
 
-                    <div class="form-add-container">
-            <div className='form-add-body-container '>
-                <Form.Label>Name</Form.Label>
-                <Form.Control maxLength={35} value={name}
-                    onChange={(event) => { setName(event.target.value) }} placeholder="Type here..." />
 
-                <hr className='invisibleHr' />
 
-                <Form.Label>Email</Form.Label>
-                <Form.Control maxLength={35} value={email}
-                    onChange={(event) => { setEmail(event.target.value) }} placeholder="Type here..." />
-
-                <hr className='invisibleHr' />
-
-                <Form.Label>Password</Form.Label>
-                <Form.Control maxLength={35} value={password}
-                    onChange={(event) => { setPassword(event.target.value) }} placeholder="Type here..." />
-
-                <hr className='invisibleHr' />
-
-                <center>
-                    <button className='form-add-button-submit' onClick={() => { register() }}>
-                        <h2>Submit</h2>
-                    </button>
-                </center>
-            </div>
-        </div>
         </>
     );
 }

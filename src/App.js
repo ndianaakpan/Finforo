@@ -50,6 +50,7 @@ function App() {
               <Route path="/simulation" element={<Simulation />} />
               <Route path="/survey" element={<Survey />} />
               <Route path="*" element={<NotFound />} />
+              <Route path="/register" element = {<Register/>} />
             </Routes>
           )}
         </>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import './Register.css';
+import styles from './Register.css';
 
 import Loading from '../../components/Loading';
 
@@ -10,6 +10,9 @@ import { createUserWithEmailAndPassword } from 'firebase/auth';
 import swal from 'sweetalert';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import "bootstrap/dist/css/bootstrap.css";
+
+
 
 function Register({ setCreateDaycare }) {
 
@@ -52,28 +55,35 @@ function Register({ setCreateDaycare }) {
     }
 
     return (
-        <div class="form-add-container">
-            <div className='form-add-body-container '>
-                <Form.Label>Name</Form.Label>
-                <Form.Control maxLength={35} value={name}
-                    onChange={(event) => { setName(event.target.value) }} placeholder="Type here..." />
 
-                <hr className='invisibleHr' />
-
-                <Form.Label>Email</Form.Label>
-                <Form.Control maxLength={35} value={email}
-                    onChange={(event) => { setEmail(event.target.value) }} placeholder="Type here..." />
-
-                <hr className='invisibleHr' />
-
-                <Form.Label>Password</Form.Label>
-                <Form.Control maxLength={35} value={password}
-                    onChange={(event) => { setPassword(event.target.value) }} placeholder="Type here..." />
-
-                <hr className='invisibleHr' />
-
+        <div class="form-add-container text-center bg">
+            <h1 className='text-light p-3'>Create Account</h1>
+            <div className='form-add-body-container container mx-auto justify-content-center border border-dark border-3 border-radius bg-white bg-gradient'>
+                
+                <Form.Control
+                    maxLength={35}
+                    value={name}
+                    onChange={(event) => { setName(event.target.value) }}
+                    placeholder="Name"
+                    className="mx-auto m-5 p-2 bg-light"
+                />
+                <Form.Control
+                    maxLength={35}
+                    value={email}
+                    onChange={(event) => { setEmail(event.target.value) }}
+                    placeholder="Email"
+                    className='mx-auto m-5 p-2 bg-light'
+                />
+                <Form.Control
+                    maxLength={35}
+                    value={password}
+                    onChange={(event) => { setPassword(event.target.value) }}
+                    placeholder="Password" 
+                    className ='mx-auto m-5 p-2 bg-light'
+                    />
+                    
                 <center>
-                    <button className='form-add-button-submit' onClick={() => { register() }}>
+                    <button className='form-add-button-submit bg-danger text-light rounded m-1' onClick={() => { register() }}>
                         <h2>Submit</h2>
                     </button>
                 </center>
