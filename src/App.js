@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import Home from './screens/Home';
 import Simulation from './screens/Simulation';
+import Survey from './screens/simulator/Survey';
+
 import Loading from './components/Loading';
 
 //Auth
@@ -46,7 +48,9 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/simulation" element={<Simulation />} />
+              <Route path="/survey" element={<Survey />} />
               <Route path="*" element={<NotFound />} />
+              <Route path="/register" element = {<Register/>} />
             </Routes>
           )}
         </>
